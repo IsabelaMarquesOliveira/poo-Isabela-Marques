@@ -1,6 +1,7 @@
 package br.com.fiapride.model;
 
-public class Sensor {
+// Implementando a interface numa classe que não tem herança
+public class Sensor implements Conectavel {
     private String modelo;
     private boolean ativo;
 
@@ -9,19 +10,20 @@ public class Sensor {
         this.setAtivo(ativo);
     }
 
-    public String getModelo() {
-        return modelo;
+    // --- Implementação dos métodos da Interface ---
+    @Override
+    public void conectarRede() {
+        System.out.println("Sensor [" + this.modelo + "]: A estabelecer ligação à central de automação...");
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    @Override
+    public void desconectarRede() {
+        System.out.println("Sensor [" + this.modelo + "]: Ligação encerrada.");
     }
 
-    public boolean isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
+    // Getters e Setters
+    public String getModelo() { return modelo; }
+    public void setModelo(String modelo) { this.modelo = modelo; }
+    public boolean isAtivo() { return ativo; }
+    public void setAtivo(boolean ativo) { this.ativo = ativo; }
 }

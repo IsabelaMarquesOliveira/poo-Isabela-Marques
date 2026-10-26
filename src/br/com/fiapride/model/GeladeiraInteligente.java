@@ -1,6 +1,7 @@
 package br.com.fiapride.model;
 
-public class GeladeiraInteligente extends Geladeira {
+// Uma classe pode herdar (extends) e assinar contratos (implements) ao mesmo tempo
+public class GeladeiraInteligente extends Geladeira implements Conectavel {
 
     private boolean conexaoWiFi;
 
@@ -20,11 +21,18 @@ public class GeladeiraInteligente extends Geladeira {
         System.out.println("Geladeira Smart: Sistema Frost Free ativado. Degelo automático e impercetível.");
     }
 
-    public boolean isConexaoWiFi() {
-        return conexaoWiFi;
+    // --- Implementação dos métodos da Interface ---
+    @Override
+    public void conectarRede() {
+        System.out.println("Geladeira Smart [" + this.getMarca() + "]: A ligar à rede Wi-Fi doméstica...");
     }
 
-    public void setConexaoWiFi(boolean conexaoWiFi) {
-        this.conexaoWiFi = conexaoWiFi;
+    @Override
+    public void desconectarRede() {
+        System.out.println("Geladeira Smart [" + this.getMarca() + "]: Wi-Fi desligado.");
     }
+
+    // Getter e Setter
+    public boolean isConexaoWiFi() { return conexaoWiFi; }
+    public void setConexaoWiFi(boolean conexaoWiFi) { this.conexaoWiFi = conexaoWiFi; }
 }
